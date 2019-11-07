@@ -1,0 +1,54 @@
+<!doctype html>
+<!--
+ This page is shown when the extension button is clicked, because the
+ "browser_action" field in manifest.json contains the "default_popup" key with
+ value "popup.html".
+ -->
+<html>
+  <head>
+    <title>Jam Spam</title>
+      <link rel="shortcut icon" href="static/syn_16.png" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='popup.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='arg.css') }}">
+    <script src="popup.js"></script>
+   </head>
+  <body>
+      
+      <header>
+            <img src="/static/syn_128.png" class="logo">
+            <h1>Jam Spam</h1> 
+        </header>
+    
+  <div class="editor">
+           <label  class="is">Input Data</label>
+           <form method="POST" action="{{ url_for('predict')}}" >
+              <textarea name="hash1" id="data"  class= "edit" cols="8" rows="8">{{comment}}</textarea>
+             <button  type="submit" onclick="checker()" id="btn" data-toggle="tooltip" data-placement="bottom" title="Let's classify" class="set" >Classifying</button>
+               <button type="button" onclick="document.getElementById('data').value=''" id="btn1" title="clear">Clear</button>
+           </form>
+      </div>  
+                         
+     <footer>
+       <fieldset class=lab>
+         <legend class="lab">Detials of text:</legend>
+          <h3 class="lab" id="res">Prediction:{{prediction}}&nbsp;&nbsp;&nbsp;Words:{{num_word}}&nbsp;&nbsp;&nbsp;Sentence:{{num_sentence}}&nbsp;&nbsp;&nbsp;Syllable:{{syllable}}&nbsp;&nbsp;&nbsp;Grade:{{grade}}&nbsp;&nbsp;&nbsp;Readability:{{read}}</h3>
+         </fieldset>
+     </footer>
+     <script>
+		  function checker(){
+		    var patt = new RegExp("[A-za-z0-9]+|[.?!]+");
+           var check=document.getElementById("data").value;
+           var res = patt.test(check);
+           if(check==''){
+           alert('Enter Your Text');
+           }
+            document.getElementById("data").value={{comment}};
+		  }
+              $('[data-toggle="tooltip"]').tooltip({
+                trigger : 'hover'
+              })  
+
+          </script>   
+             
+  </body>
+</html>
