@@ -19,29 +19,18 @@ Pre-request
 	 ->pickle
  
  [*]For usage goto directory where  app.py
-     
+ 
 		 dir(where zip extract)
-    
 		 |
-     
-		 
 		 |--app.py
-     
 		 |
-     
 		 |--templates/|
-     
 		 |            |--home.html
-     
 		 |               
-     
 		 |--static/|--pictures{}
-               
-							 |--popup.css
-               
-							 |--arg.css
-               
-							 |--popup.js
+			   |--popup.cs
+	      		   |--arg.css
+	 		   |--popup.js
  
  Then open terminal type command [ python app.py]
  
